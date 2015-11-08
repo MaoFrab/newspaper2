@@ -9,3 +9,7 @@
 /composer.phar
 /vendor/
 /web/bundles/
+
+.idea/workspace.xml
+
+.DS_Store
