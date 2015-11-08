@@ -21,7 +21,7 @@ AppBundle\Entity\Article:
             targetEntity: AppBundle\Entity\Tag
             inversedBy: articles
             joinTable:
-                name: tags
+                name: articles_tags
                 joinColumns:
                     article_id:
                         referencedColumnName: id
