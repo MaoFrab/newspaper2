@@ -1,0 +1,30 @@
+_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Article:index" }
+
+_show:
+    path:     /article/{id}
+    defaults: { _controller: "AppBundle:Article:show" }
+
+_new:
+    path:     /article/new
+    defaults: { _controller: "AppBundle:Article:new" }
+
+_create:
+    path:     /article/create
+    defaults: { _controller: "AppBundle:Article:create" }
+    methods:  POST
+
+_edit:
+    path:     /article/{id}/edit
+    defaults: { _controller: "AppBundle:Article:edit" }
+
+_update:
+    path:     /article/{id}/update
+    defaults: { _controller: "AppBundle:Article:update" }
+    methods:  [POST, PUT]
+
+_delete:
+    path:     /article/{id}/delete
+    defaults: { _controller: "AppBundle:Article:delete" }
+    methods:  [POST, DELETE]

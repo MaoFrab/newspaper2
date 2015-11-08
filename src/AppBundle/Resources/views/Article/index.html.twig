@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <h1>newspaper</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr style="width: 60%;">
+                <th>Articles</th>
+            </tr>
+        </thead>
+        <tbody style = "background: rgba(161, 193, 255, 0.5); width: 70%">
+        {% for entity in entities %}
+            <tr >
+                <td>
+                    <h4>
+                        <a href="{{ path('_show', { 'id': entity.article.id }) }}">{{ entity.article.subject }}</a>
+                    </h4>
+                    <div>
+                        {% for tag in entity.tags %}
+                            {{ tag.name }}
+                        {% endfor %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-left: 80%; height: auto; width: auto; background: rgba(161, 193, 255, 0.5);">
+        <span>Popular Tags</span>
+        <ul>
+            {% for tag in tags %}
+            <li><a href="{{ path('_show_article_by_tags', {'id': tag.id }) }}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}

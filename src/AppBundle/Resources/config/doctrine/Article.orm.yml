@@ -1,0 +1,31 @@
+AppBundle\Entity\Article:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Entity\ArticleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        subject:
+            type: string
+            length: '340'
+        body:
+            type: string
+            length: '1000000'
+
+    manyToMany:
+        tags:
+            targetEntity: AppBundle\Entity\Tag
+            inversedBy: articles
+            joinTable:
+                name: tags
+                joinColumns:
+                    article_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

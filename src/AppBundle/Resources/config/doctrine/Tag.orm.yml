@@ -1,0 +1,23 @@
+AppBundle\Entity\Tag:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Entity\TagRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '100'
+        popularity:
+            type: integer
+    manyToMany:
+        articles:
+            targetEntity: AppBundle\Entity\Article
+            mappedBy: tags
+            cascade: ['persist']
+
+    lifecycleCallbacks: {  }

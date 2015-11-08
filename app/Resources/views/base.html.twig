@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div style="margin-left: 80%;">
+            {% if is_granted("ROLE_USER") %}
+                <p>
+                    <a href="{{ path('_new') }}">Create a new Article</a>
+                </p>
+            {% endif %}
+
+            {% if is_granted("ROLE_USER") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <p>
+                    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                </p>
+            {% else %}
+                <p>
+                    <a href="{{ path('fos_user_registration_register') }}">Registration</a>
+                </p>
+                <p>
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                </p>
+            {% endif %}
+        </div>
+        <div style="width: 80%; margin-left: 10%; background: rgba(136, 151, 178, 0.25); ">
+        {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

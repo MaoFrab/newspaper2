@@ -1,0 +1,22 @@
+services:
+    app.admin.article:
+        class: AppBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "News", label: "Article" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Article
+            - SonataAdminBundle:CRUD
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.tag:
+        class: AppBundle\Admin\TagAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Tag", label: "Tag" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Tag
+            - SonataAdminBundle:CRUD
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

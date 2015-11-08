@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Article</h1>
+
+    <div>
+        <table class="record_properties">
+            <tbody>
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <h1>
+                        <td>{{ entity.subject }}</td>
+                    </h1>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{ entity.body }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% for tag in tags %}
+            <span>
+                <a href="{{ path('_show_article_by_tags', {'id': tag.id }) }}">{{ tag.name }}</a>
+            </span>
+        {% endfor %}
+    </div>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('_index') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+    {% block scripts %}
+        {{ parent() }}
+        {% if form is defined %}
+            <script src="{{ asset('bundles/adminbundle/js/select2-4.0.0/js/select2.min.js') }}"></script>
+            {{ form_javascript(form) }}
+        {% endif %}
+    {% endblock %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {% if form is defined %}
+            <link rel="stylesheet" href="{{ asset('bundles/adminbundle/js/select2-4.0.0/css/select2.min.css') }}">
+            {{ form_stylesheet(form) }}
+        {% endif %}
+    {% endblock %}
+
+{% block body -%}
+    <script>
+        $(".js-example-tags").select2({
+            tags: true
+        })
+    </script>
+    <h1>Article creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('_index') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

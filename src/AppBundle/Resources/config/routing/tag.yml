@@ -1,0 +1,3 @@
+_show_article_by_tags:
+    path:     /{id}
+    defaults: { _controller: "AppBundle:Tag:index" }
